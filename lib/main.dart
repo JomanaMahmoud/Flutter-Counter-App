@@ -61,11 +61,19 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
       if (_counter == 10) {
-        // Show SnackBar when counter reaches 10
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("You've reached 10 clicks!"),
-            duration: Duration(seconds: 2),
+          SnackBar(
+            content: const Text(
+              "You've reached 10 clicks!",
+              style: TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.blue,
+            duration: const Duration(seconds: 2),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20), // Rounded edges
+            ),
+              behavior: SnackBarBehavior.floating,
+           margin: const EdgeInsets.all(10),
           ),
         );
       }
