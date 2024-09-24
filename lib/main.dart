@@ -60,6 +60,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       _counter++;
+      if (_counter == 10) {
+        // Show SnackBar when counter reaches 10
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("You've reached 10 clicks!"),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
     });
 
     }
@@ -76,31 +85,19 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
   }
+
     @override
     Widget build(BuildContext context) {
-      // This method is rerun every time setState is called, for instance as done
-      // by the _incrementCounter method above.
-      //
-      // The Flutter framework has been optimized to make rerunning build methods
-      // fast, so that you can just rebuild anything that needs updating rather
-      // than having to individually change instances of widgets.
       return Scaffold(
         appBar: AppBar(
-          // TRY THIS: Try changing the color here to a specific color (to
-          // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-          // change color while the other colors stay the same.
           backgroundColor: Theme
               .of(context)
               .colorScheme
               .inversePrimary,
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
           centerTitle: true,
         ),
         body: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
           child: Column(
             // Column is also a layout widget. It takes a list of children and
             // arranges them vertically. By default, it sizes itself to fit its
@@ -150,6 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Icon(Icons.add),
             ),
           ],
+
         ),
       );
     }
